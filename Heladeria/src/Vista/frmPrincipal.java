@@ -27,25 +27,43 @@ public class frmPrincipal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        PanelPrincipal = new javax.swing.JDesktopPane();
         jMenuBar1 = new javax.swing.JMenuBar();
         mHelado = new javax.swing.JMenu();
-        miNuevo = new javax.swing.JMenuItem();
-        miListar = new javax.swing.JMenuItem();
+        btnNuevoHelado = new javax.swing.JMenuItem();
+        btnListarHelados = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        javax.swing.GroupLayout PanelPrincipalLayout = new javax.swing.GroupLayout(PanelPrincipal);
+        PanelPrincipal.setLayout(PanelPrincipalLayout);
+        PanelPrincipalLayout.setHorizontalGroup(
+            PanelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 533, Short.MAX_VALUE)
+        );
+        PanelPrincipalLayout.setVerticalGroup(
+            PanelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 279, Short.MAX_VALUE)
+        );
+
         mHelado.setText("Helado");
 
-        miNuevo.setText("Nuevo helado");
-        mHelado.add(miNuevo);
-
-        miListar.setText("Listar helados");
-        miListar.addActionListener(new java.awt.event.ActionListener() {
+        btnNuevoHelado.setText("Nuevo helado");
+        btnNuevoHelado.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btnNuevoHelado.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                miListarActionPerformed(evt);
+                btnNuevoHeladoActionPerformed(evt);
             }
         });
-        mHelado.add(miListar);
+        mHelado.add(btnNuevoHelado);
+
+        btnListarHelados.setText("Listar helados");
+        btnListarHelados.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnListarHeladosActionPerformed(evt);
+            }
+        });
+        mHelado.add(btnListarHelados);
 
         jMenuBar1.add(mHelado);
 
@@ -55,19 +73,26 @@ public class frmPrincipal extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addComponent(PanelPrincipal, javax.swing.GroupLayout.Alignment.TRAILING)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 279, Short.MAX_VALUE)
+            .addComponent(PanelPrincipal)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void miListarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miListarActionPerformed
+    private void btnListarHeladosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnListarHeladosActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_miListarActionPerformed
+    }//GEN-LAST:event_btnListarHeladosActionPerformed
+
+    private void btnNuevoHeladoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevoHeladoActionPerformed
+        frmHelado formulario = new frmHelado();
+        PanelPrincipal.add(formulario);
+        formulario.setVisible(true);
+        
+    }//GEN-LAST:event_btnNuevoHeladoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -105,9 +130,10 @@ public class frmPrincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JDesktopPane PanelPrincipal;
+    private javax.swing.JMenuItem btnListarHelados;
+    private javax.swing.JMenuItem btnNuevoHelado;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenu mHelado;
-    private javax.swing.JMenuItem miListar;
-    private javax.swing.JMenuItem miNuevo;
     // End of variables declaration//GEN-END:variables
 }

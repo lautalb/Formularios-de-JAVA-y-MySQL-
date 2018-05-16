@@ -10,5 +10,12 @@ package Entidades;
  * @author alumno
  */
 public class Helado {
-    
+
+    private int id;
+    private String sabor;
+
+    public Helado(int id, String sabor) {
+        this.id = id;
+        this.sabor = sabor;
+    }
 }
