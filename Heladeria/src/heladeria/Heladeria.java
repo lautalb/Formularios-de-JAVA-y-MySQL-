@@ -18,8 +18,9 @@ public class Heladeria {
      */
     public static void main(String[] args) {
         frmPrincipal frm = new frmPrincipal();
-        frm.setVisible(true);
         frm.setExtendedState(frm.MAXIMIZED_BOTH);
+        frm.setVisible(true);
+        
     }
     
 }

@@ -27,7 +27,29 @@ public class frmPrincipal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jMenuBar1 = new javax.swing.JMenuBar();
+        mHelado = new javax.swing.JMenu();
+        miNuevo = new javax.swing.JMenuItem();
+        miListar = new javax.swing.JMenuItem();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        mHelado.setText("Helado");
+
+        miNuevo.setText("Nuevo helado");
+        mHelado.add(miNuevo);
+
+        miListar.setText("Listar helados");
+        miListar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                miListarActionPerformed(evt);
+            }
+        });
+        mHelado.add(miListar);
+
+        jMenuBar1.add(mHelado);
+
+        setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -37,11 +59,15 @@ public class frmPrincipal extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGap(0, 279, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void miListarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miListarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_miListarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -79,5 +105,9 @@ public class frmPrincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenu mHelado;
+    private javax.swing.JMenuItem miListar;
+    private javax.swing.JMenuItem miNuevo;
     // End of variables declaration//GEN-END:variables
 }
