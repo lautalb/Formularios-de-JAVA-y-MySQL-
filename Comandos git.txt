@@ -1,0 +1,21 @@
+primero hay que clonar el repositorio, si ya lo hiciste una vez en tu casa no es necesario otra vez.
+git clone "link.git del repositorio"
+
+segundo comando para verificar las modificaciones, hay que estar adentro del repositorio clonado.
+git status
+
+tercer comando, agrega los archivos modificados para poder subirlos al repositor
+git add .
+
+git commit -m "Heladeria + comandos"
+
+podemos hacer varios commit
+
+
+y por ultimo 
+
+git push origin master -f
+
+ git config --global user.email "lautalb@hotmail.com"
+
+git config --global user.name "lautalb"
