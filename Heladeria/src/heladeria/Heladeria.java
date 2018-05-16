@@ -6,6 +6,7 @@
 package heladeria;
 
 import Vista.frmPrincipal;
+import dao.conexion;
 
 /**
  *
@@ -20,6 +21,8 @@ public class Heladeria {
         frmPrincipal frm = new frmPrincipal();
         frm.setExtendedState(frm.MAXIMIZED_BOTH);
         frm.setVisible(true);
+        
+        
         
     }
     

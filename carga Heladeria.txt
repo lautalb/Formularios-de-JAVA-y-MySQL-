@@ -1,0 +1,2 @@
+Helados:
+INSERT INTO `helado`(`sabor`) VALUES ("chocolate"),("frutilla"),("limon")
