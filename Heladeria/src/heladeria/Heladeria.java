@@ -5,6 +5,8 @@
  */
 package heladeria;
 
+import Vista.frmPrincipal;
+
 /**
  *
  * @author alumno
@@ -15,7 +17,9 @@ public class Heladeria {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        
+        frmPrincipal frm = new frmPrincipal();
+        frm.setVisible(true);
+        frm.setExtendedState(frm.MAXIMIZED_BOTH);
     }
     
 }
