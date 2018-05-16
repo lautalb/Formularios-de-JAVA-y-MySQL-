@@ -5,6 +5,11 @@
  */
 package Vista;
 
+import Entidades.Helado;
+import java.util.ArrayList;
+import java.util.Iterator;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author alumno
@@ -16,6 +21,29 @@ public class frmListadoHelados extends javax.swing.JInternalFrame {
      */
     public frmListadoHelados() {
         initComponents();
+        //llamamos al metodo llenar helados para que apenas inicie se llene
+        this.llenarTablaHelados();
+    }
+
+    public void llenarTablaHelados() {
+        DefaultTableModel modelo = new DefaultTableModel();
+        tbListarHelados.setModel(modelo);
+
+        modelo.addColumn("IdHelado");
+        modelo.addColumn("Sabor");
+
+        ArrayList<Helado> lista = Helado.ListarHelados();
+        Iterator iter = lista.iterator();
+        Object[] columnas = new Object[2];
+
+        while (iter.hasNext()) {
+            Helado h = (Helado) iter.next();
+            columnas[0] = h.getId();
+            columnas[1] = h.getSabor();
+
+            modelo.addRow(columnas);
+        }
+
     }
 
     /**
@@ -29,11 +57,11 @@ public class frmListadoHelados extends javax.swing.JInternalFrame {
 
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tbListarHelados = new javax.swing.JTable();
 
         jLabel1.setText("Listado Helados");
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tbListarHelados.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -44,7 +72,7 @@ public class frmListadoHelados extends javax.swing.JInternalFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tbListarHelados);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -75,6 +103,6 @@ public class frmListadoHelados extends javax.swing.JInternalFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable tbListarHelados;
     // End of variables declaration//GEN-END:variables
 }
