@@ -5,6 +5,8 @@
  */
 package Vista;
 
+import Entidades.Helado;
+
 /**
  *
  * @author alumno
@@ -94,6 +96,13 @@ public class frmHelado extends javax.swing.JInternalFrame {
           //tomar el sabor
           //crear una instancia de helado
           //llamar al metodo guardar  de helado
+          Helado helado= new Helado();
+          helado.setId(0);
+          helado.setSabor(txtSabor.getText());
+          
+          Helado.guardarUnHelado(helado);
+          
+          
     }//GEN-LAST:event_btnAceptarActionPerformed
 
 

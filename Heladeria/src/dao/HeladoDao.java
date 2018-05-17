@@ -10,6 +10,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -18,6 +19,25 @@ import java.util.ArrayList;
 public class HeladoDao {
     
     
+    public void guardarHelado(Helado helado){
+        
+        
+        try {
+            conexion con = new conexion();
+            Connection conn = con.RetornarConeccion();
+
+            PreparedStatement ps = conn.prepareStatement("INSERT INTO HELADO (SABOR) VALUES (?)");
+            ps.setString(1, helado.getSabor().toString());
+            ResultSet rs = ps.executeQuery();
+            
+            JOptionPane.showMessageDialog(null, "Los datos fueron cargados correctamente!");
+            ps.close();
+        } catch (Exception e) {
+            System.out.println(e.toString());
+        }
+        
+        
+    }
 
     public ArrayList<Helado> listarJugadas() {
 
