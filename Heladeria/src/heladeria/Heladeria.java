@@ -19,17 +19,17 @@ public class Heladeria {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-       // frmPrincipal frm = new frmPrincipal();
-       // frm.setExtendedState(frm.MAXIMIZED_BOTH);
-        //frm.setVisible(true);
+        frmPrincipal frm = new frmPrincipal();
+        frm.setExtendedState(frm.MAXIMIZED_BOTH);
+        frm.setVisible(true);
         
         
         
-        Helado helado= new Helado();
-        helado.setId(0);
-        helado.setSabor("Marroc");
-        
-        Helado.guardarUnHelado(helado);
+//        Helado helado= new Helado();
+//        helado.setId(0);
+//        helado.setSabor("Marroc");
+//        
+//        Helado.guardarUnHelado(helado);
         
         
     }

@@ -28,7 +28,7 @@ public class HeladoDao {
 
             PreparedStatement ps = conn.prepareStatement("INSERT INTO HELADO (SABOR) VALUES (?)");
             ps.setString(1, helado.getSabor().toString());
-            ResultSet rs = ps.executeQuery();
+            ps.executeUpdate();
             
             JOptionPane.showMessageDialog(null, "Los datos fueron cargados correctamente!");
             ps.close();
