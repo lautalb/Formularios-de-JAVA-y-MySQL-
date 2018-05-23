@@ -107,14 +107,14 @@ public class frmPrincipal extends javax.swing.JFrame {
         //frmListadoHelados formulario = new frmListadoHelados();
         //this.controlarInstancia(formulario);
         try {
-             if (frmListadoHelados.PuedoCrearOtra()) {
-            frmListadoHelados formulario = new frmListadoHelados();
-            PanelPrincipal.add(formulario);
-            formulario.setVisible(true);
-            formulario.setClosable(true);
-            formulario.setMaximizable(true);
-            
-        }
+            if (frmListadoHelados.PuedoCrearOtra()) {
+                frmListadoHelados formulario = new frmListadoHelados();
+                PanelPrincipal.add(formulario);
+                formulario.setVisible(true);
+                formulario.setClosable(true);
+                formulario.setMaximizable(true);
+
+            }
         } catch (Exception e) {
         }
 
@@ -123,15 +123,15 @@ public class frmPrincipal extends javax.swing.JFrame {
     private void btnNuevoHeladoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevoHeladoActionPerformed
         //frmHelado formulario = new frmHelado();
         //this.controlarInstancia(formulario);
-        
+
         try {
             if (frmHelado.PuedoCrearOtra()) {
-            frmHelado formulario = new frmHelado();
-            PanelPrincipal.add(formulario);
-            formulario.setVisible(true);
-            formulario.setClosable(true);
-            formulario.setMaximizable(true);
-        }
+                frmHelado formulario = new frmHelado();
+                PanelPrincipal.add(formulario);
+                formulario.setVisible(true);
+                formulario.setClosable(true);
+                formulario.setMaximizable(true);
+            }
         } catch (Exception e) {
         }
 

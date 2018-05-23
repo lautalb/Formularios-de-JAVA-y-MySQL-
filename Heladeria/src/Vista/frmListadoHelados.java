@@ -28,13 +28,13 @@ public class frmListadoHelados extends javax.swing.JInternalFrame {
         //llamamos al metodo llenar helados para que apenas inicie se llene
         this.llenarTablaHelados();
     }
-    public static boolean PuedoCrearOtra(){
-        
-        boolean retorno= false;
-        if(cantidad==0){
-            retorno=true;
+    public static boolean PuedoCrearOtra() {
+
+        boolean retorno = false;
+        if (cantidad == 0) {
+            retorno = true;
         }
-        
+
         return retorno;
     }
 

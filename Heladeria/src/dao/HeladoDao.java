@@ -55,7 +55,7 @@ public class HeladoDao {
 
                 lista.add(helado);
             }
-            
+
         } catch (Exception e) {
             System.out.println(e.toString());
         }

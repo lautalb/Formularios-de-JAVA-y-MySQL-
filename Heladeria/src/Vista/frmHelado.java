@@ -12,24 +12,27 @@ import Entidades.Helado;
  * @author alumno
  */
 public class frmHelado extends javax.swing.JInternalFrame {
+
     private static int cantidad;
+
     /**
      * Creates new form frmHelado
      */
     public frmHelado() throws Exception {
         initComponents();
-        if(cantidad==1){
+        if (cantidad == 1) {
             throw new Exception();
         }
-        this.cantidad=1;
+        this.cantidad = 1;
     }
-     public static boolean PuedoCrearOtra(){
-        
-        boolean retorno= false;
-        if(cantidad==0){
-            retorno=true;
+
+    public static boolean PuedoCrearOtra() {
+
+        boolean retorno = false;
+        if (cantidad == 0) {
+            retorno = true;
         }
-        
+
         return retorno;
     }
 
@@ -120,25 +123,25 @@ public class frmHelado extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
-        this.cantidad=0;
+        this.cantidad = 0;
         this.hide();
     }//GEN-LAST:event_btnCancelarActionPerformed
 
     private void btnAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarActionPerformed
-          //tomar el sabor
-          //crear una instancia de helado
-          //llamar al metodo guardar  de helado
-          Helado helado= new Helado();
-          helado.setId(0);
-          helado.setSabor(txtSabor.getText());
-          
-          Helado.guardarUnHelado(helado);
-          
-          
+        //tomar el sabor
+        //crear una instancia de helado
+        //llamar al metodo guardar  de helado
+        Helado helado = new Helado();
+        helado.setId(0);
+        helado.setSabor(txtSabor.getText());
+
+        Helado.guardarUnHelado(helado);
+
+
     }//GEN-LAST:event_btnAceptarActionPerformed
 
     private void formInternalFrameClosing(javax.swing.event.InternalFrameEvent evt) {//GEN-FIRST:event_formInternalFrameClosing
-        this.cantidad=0;
+        this.cantidad = 0;
     }//GEN-LAST:event_formInternalFrameClosing
 
 

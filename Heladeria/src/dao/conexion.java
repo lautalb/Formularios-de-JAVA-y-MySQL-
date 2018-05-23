@@ -34,7 +34,7 @@ public class conexion {
 
     }
 
-    public  Connection RetornarConeccion() {
+    public Connection RetornarConeccion() {
         return cn;
     }
 }
