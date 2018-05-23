@@ -136,8 +136,7 @@ public class frmHelado extends javax.swing.JInternalFrame {
         helado.setSabor(txtSabor.getText());
 
         Helado.guardarUnHelado(helado);
-
-
+            
     }//GEN-LAST:event_btnAceptarActionPerformed
 
     private void formInternalFrameClosing(javax.swing.event.InternalFrameEvent evt) {//GEN-FIRST:event_formInternalFrameClosing

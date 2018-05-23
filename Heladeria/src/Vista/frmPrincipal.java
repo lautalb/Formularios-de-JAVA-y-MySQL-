@@ -124,16 +124,21 @@ public class frmPrincipal extends javax.swing.JFrame {
         //frmHelado formulario = new frmHelado();
         //this.controlarInstancia(formulario);
 
-        try {
-            if (frmHelado.PuedoCrearOtra()) {
-                frmHelado formulario = new frmHelado();
-                PanelPrincipal.add(formulario);
-                formulario.setVisible(true);
-                formulario.setClosable(true);
-                formulario.setMaximizable(true);
-            }
-        } catch (Exception e) {
-        }
+//        try {
+//            if (frmHelado.PuedoCrearOtra()) {
+//                frmHelado formulario = new frmHelado();
+//                PanelPrincipal.add(formulario);
+//                formulario.setVisible(true);
+//                formulario.setClosable(true);
+//                formulario.setMaximizable(true);
+//            }
+//        } catch (Exception e) {
+//        }
+
+        frmHeladoConFoto frm = new frmHeladoConFoto();
+        PanelPrincipal.add(frm);
+        frm.setVisible(true);
+            
 
     }//GEN-LAST:event_btnNuevoHeladoActionPerformed
 
