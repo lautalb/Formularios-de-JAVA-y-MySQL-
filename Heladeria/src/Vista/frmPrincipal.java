@@ -19,7 +19,8 @@ public class frmPrincipal extends javax.swing.JFrame {
     public frmPrincipal() {
         initComponents();
     }
-    
+
+    /*
     public void controlarInstancia(JInternalFrame inter){
         boolean mostrar=true;
         
@@ -36,9 +37,7 @@ public class frmPrincipal extends javax.swing.JFrame {
             inter.setVisible(true);
         }
     }
-          
-    
-
+     */
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -105,17 +104,37 @@ public class frmPrincipal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnListarHeladosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnListarHeladosActionPerformed
-        frmListadoHelados formulario = new frmListadoHelados();
-        this.controlarInstancia(formulario);
+        //frmListadoHelados formulario = new frmListadoHelados();
+        //this.controlarInstancia(formulario);
+        try {
+             if (frmListadoHelados.PuedoCrearOtra()) {
+            frmListadoHelados formulario = new frmListadoHelados();
+            PanelPrincipal.add(formulario);
+            formulario.setVisible(true);
+            formulario.setClosable(true);
+            formulario.setMaximizable(true);
+            
+        }
+        } catch (Exception e) {
+        }
+
     }//GEN-LAST:event_btnListarHeladosActionPerformed
 
     private void btnNuevoHeladoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevoHeladoActionPerformed
-        frmHelado formulario = new frmHelado();
-        PanelPrincipal.add(formulario);
-        formulario.setMaximizable(true);
-        formulario.setClosable(true);
-        formulario.setVisible(true);
+        //frmHelado formulario = new frmHelado();
+        //this.controlarInstancia(formulario);
         
+        try {
+            if (frmHelado.PuedoCrearOtra()) {
+            frmHelado formulario = new frmHelado();
+            PanelPrincipal.add(formulario);
+            formulario.setVisible(true);
+            formulario.setClosable(true);
+            formulario.setMaximizable(true);
+        }
+        } catch (Exception e) {
+        }
+
     }//GEN-LAST:event_btnNuevoHeladoActionPerformed
 
     /**

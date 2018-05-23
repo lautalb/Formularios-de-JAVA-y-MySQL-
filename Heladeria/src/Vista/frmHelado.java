@@ -12,12 +12,25 @@ import Entidades.Helado;
  * @author alumno
  */
 public class frmHelado extends javax.swing.JInternalFrame {
-
+    private static int cantidad;
     /**
      * Creates new form frmHelado
      */
-    public frmHelado() {
+    public frmHelado() throws Exception {
         initComponents();
+        if(cantidad==1){
+            throw new Exception();
+        }
+        this.cantidad=1;
+    }
+     public static boolean PuedoCrearOtra(){
+        
+        boolean retorno= false;
+        if(cantidad==0){
+            retorno=true;
+        }
+        
+        return retorno;
     }
 
     /**
@@ -33,6 +46,24 @@ public class frmHelado extends javax.swing.JInternalFrame {
         jLabel1 = new javax.swing.JLabel();
         btnAceptar = new javax.swing.JButton();
         btnCancelar = new javax.swing.JButton();
+
+        addInternalFrameListener(new javax.swing.event.InternalFrameListener() {
+            public void internalFrameActivated(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameClosed(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameClosing(javax.swing.event.InternalFrameEvent evt) {
+                formInternalFrameClosing(evt);
+            }
+            public void internalFrameDeactivated(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameDeiconified(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameIconified(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameOpened(javax.swing.event.InternalFrameEvent evt) {
+            }
+        });
 
         txtSabor.setToolTipText("Ingrese sabor");
 
@@ -89,7 +120,8 @@ public class frmHelado extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
-        
+        this.cantidad=0;
+        this.hide();
     }//GEN-LAST:event_btnCancelarActionPerformed
 
     private void btnAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarActionPerformed
@@ -104,6 +136,10 @@ public class frmHelado extends javax.swing.JInternalFrame {
           
           
     }//GEN-LAST:event_btnAceptarActionPerformed
+
+    private void formInternalFrameClosing(javax.swing.event.InternalFrameEvent evt) {//GEN-FIRST:event_formInternalFrameClosing
+        this.cantidad=0;
+    }//GEN-LAST:event_formInternalFrameClosing
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
