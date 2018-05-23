@@ -17,29 +17,26 @@ import javax.swing.JOptionPane;
  * @author alumno
  */
 public class HeladoDao {
-    
-    
-    public void guardarHelado(Helado helado){
-        
-        
+
+    public void guardarHelado(Helado helado) {
+
         try {
             conexion con = new conexion();
             Connection conn = con.RetornarConeccion();
 
             PreparedStatement ps = conn.prepareStatement("INSERT INTO HELADO (SABOR) VALUES (?)");
-            ps.setString(1, helado.getSabor().toString());
+            ps.setString(1, helado.getSabor());
             ps.executeUpdate();
-            
+
             JOptionPane.showMessageDialog(null, "Los datos fueron cargados correctamente!");
             ps.close();
         } catch (Exception e) {
             System.out.println(e.toString());
         }
-        
-        
+
     }
 
-    public ArrayList<Helado> listarJugadas() {
+    public ArrayList<Helado> listarHelados() {
 
         ArrayList<Helado> lista = new ArrayList<Helado>();
         Helado helado;
@@ -58,6 +55,7 @@ public class HeladoDao {
 
                 lista.add(helado);
             }
+            
         } catch (Exception e) {
             System.out.println(e.toString());
         }

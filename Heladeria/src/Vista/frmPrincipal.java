@@ -5,6 +5,8 @@
  */
 package Vista;
 
+import javax.swing.JInternalFrame;
+
 /**
  *
  * @author alumno
@@ -17,6 +19,25 @@ public class frmPrincipal extends javax.swing.JFrame {
     public frmPrincipal() {
         initComponents();
     }
+    
+    public void controlarInstancia(JInternalFrame inter){
+        boolean mostrar=true;
+        
+        for (int i = 0; i < PanelPrincipal.getComponentCount(); i++) {
+            if(inter.getClass().isInstance(PanelPrincipal.getComponent(i))){
+                mostrar=false;
+            }
+        }
+        
+        if(mostrar){
+            inter.setClosable(true);
+            inter.setMaximizable(true);
+            PanelPrincipal.add(inter);
+            inter.setVisible(true);
+        }
+    }
+          
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -85,13 +106,14 @@ public class frmPrincipal extends javax.swing.JFrame {
 
     private void btnListarHeladosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnListarHeladosActionPerformed
         frmListadoHelados formulario = new frmListadoHelados();
-        PanelPrincipal.add(formulario);
-        formulario.setVisible(true);
+        this.controlarInstancia(formulario);
     }//GEN-LAST:event_btnListarHeladosActionPerformed
 
     private void btnNuevoHeladoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevoHeladoActionPerformed
         frmHelado formulario = new frmHelado();
         PanelPrincipal.add(formulario);
+        formulario.setMaximizable(true);
+        formulario.setClosable(true);
         formulario.setVisible(true);
         
     }//GEN-LAST:event_btnNuevoHeladoActionPerformed

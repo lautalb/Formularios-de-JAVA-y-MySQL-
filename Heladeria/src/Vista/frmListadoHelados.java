@@ -28,7 +28,7 @@ public class frmListadoHelados extends javax.swing.JInternalFrame {
     public void llenarTablaHelados() {
         DefaultTableModel modelo = new DefaultTableModel();
         tbListarHelados.setModel(modelo);
-        
+
         modelo.addColumn("IdHelado");
         modelo.addColumn("Sabor");
 
@@ -42,7 +42,9 @@ public class frmListadoHelados extends javax.swing.JInternalFrame {
             columnas[1] = h.getSabor();
 
             modelo.addRow(columnas);
+            modelo.fireTableDataChanged();
         }
+        
 
     }
 

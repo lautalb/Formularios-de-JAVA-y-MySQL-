@@ -19,3 +19,8 @@ git push origin master -f
  git config --global user.email "lautalb@hotmail.com"
 
 git config --global user.name "lautalb"
+
+
+
+para actualizar la carpeta forkeada 
+git pull

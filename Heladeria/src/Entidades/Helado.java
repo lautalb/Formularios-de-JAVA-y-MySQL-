@@ -45,7 +45,7 @@ public class Helado {
 
         HeladoDao helado = new HeladoDao();
 
-        return helado.listarJugadas();
+        return helado.listarHelados();
     }
     
     public static void guardarUnHelado(Helado helado){
