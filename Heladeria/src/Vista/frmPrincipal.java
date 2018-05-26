@@ -6,6 +6,7 @@
 package Vista;
 
 import javax.swing.JInternalFrame;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -20,7 +21,7 @@ public class frmPrincipal extends javax.swing.JFrame {
         initComponents();
     }
 
-    /*
+    /* para hacer formulario unico
     public void controlarInstancia(JInternalFrame inter){
         boolean mostrar=true;
         
@@ -38,6 +39,7 @@ public class frmPrincipal extends javax.swing.JFrame {
         }
     }
      */
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -116,6 +118,7 @@ public class frmPrincipal extends javax.swing.JFrame {
 
             }
         } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Ya tiene la ventana abierta!");
         }
 
     }//GEN-LAST:event_btnListarHeladosActionPerformed
@@ -135,9 +138,15 @@ public class frmPrincipal extends javax.swing.JFrame {
 //        } catch (Exception e) {
 //        }
 
-        frmHeladoConFoto frm = new frmHeladoConFoto();
-        PanelPrincipal.add(frm);
-        frm.setVisible(true);
+        try {
+            frmHeladoConFoto frm = new frmHeladoConFoto();
+            PanelPrincipal.add(frm);
+            frm.setMaximizable(true);
+            frm.setClosable(true);
+            frm.setVisible(true);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Ya tiene la ventana abierta!");
+        }
             
 
     }//GEN-LAST:event_btnNuevoHeladoActionPerformed
