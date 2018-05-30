@@ -24,8 +24,9 @@ public class HeladoDao {
             conexion con = new conexion();
             Connection conn = con.RetornarConeccion();
 
-            PreparedStatement ps = conn.prepareStatement("INSERT INTO HELADO (SABOR) VALUES (?)");
+            PreparedStatement ps = conn.prepareStatement("INSERT INTO HELADO (SABOR, RUTA) VALUES (?,?)");
             ps.setString(1, helado.getSabor());
+            ps.setString(2, helado.getRuta());
             ps.executeUpdate();
 
             JOptionPane.showMessageDialog(null, "Los datos fueron cargados correctamente!");
@@ -52,6 +53,7 @@ public class HeladoDao {
                 helado = new Helado();
                 helado.setId(Integer.parseInt(rs.getString("idHelado")));
                 helado.setSabor(rs.getString("sabor"));
+                helado.setRuta(rs.getString("ruta"));
 
                 lista.add(helado);
             }

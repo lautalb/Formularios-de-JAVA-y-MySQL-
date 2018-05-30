@@ -16,6 +16,7 @@ public class Helado {
 
     private int id;
     private String sabor;
+    private String ruta;
 
     public Helado() {
     }
@@ -23,6 +24,14 @@ public class Helado {
     public Helado(int id, String sabor) {
         this.id = id;
         this.sabor = sabor;
+    }
+
+    public String getRuta() {
+        return ruta;
+    }
+
+    public void setRuta(String ruta) {
+        this.ruta = ruta;
     }
 
     public int getId() {

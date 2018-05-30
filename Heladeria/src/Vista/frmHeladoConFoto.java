@@ -5,6 +5,7 @@
  */
 package Vista;
 
+import Entidades.Helado;
 import java.awt.Image;
 import javax.swing.JFileChooser;
 import javax.swing.ImageIcon;
@@ -15,7 +16,7 @@ import javax.swing.JOptionPane;
  * @author alumno
  */
 public class frmHeladoConFoto extends javax.swing.JInternalFrame {
-    
+
     private static int cantidad;
 
     /**
@@ -26,17 +27,17 @@ public class frmHeladoConFoto extends javax.swing.JInternalFrame {
         if (cantidad == 1) {
             throw new ArithmeticException();
         }
-        
+
         this.cantidad = 1;
     }
-    
+
     public static boolean PuedoCrearOtra() {
-        
+
         boolean retorno = false;
         if (cantidad == 0) {
             retorno = true;
         }
-        
+
         return retorno;
     }
 
@@ -52,11 +53,11 @@ public class frmHeladoConFoto extends javax.swing.JInternalFrame {
         txtNombreHelado = new javax.swing.JTextField();
         btnAgregar = new javax.swing.JButton();
         btnSalir = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
         txtImagen = new javax.swing.JTextField();
-        jLabel2 = new javax.swing.JLabel();
         btnBucarImagen = new javax.swing.JButton();
         lblImagen = new javax.swing.JLabel();
+        lblNombre = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
 
         setTitle("Nuevo Helado");
         setToolTipText("");
@@ -79,8 +80,18 @@ public class frmHeladoConFoto extends javax.swing.JInternalFrame {
         });
 
         txtNombreHelado.setToolTipText("Ingrese nombre del nuevo helado.");
+        txtNombreHelado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtNombreHeladoActionPerformed(evt);
+            }
+        });
 
         btnAgregar.setText("Agregar");
+        btnAgregar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAgregarActionPerformed(evt);
+            }
+        });
 
         btnSalir.setText("Salir");
         btnSalir.addActionListener(new java.awt.event.ActionListener() {
@@ -89,11 +100,7 @@ public class frmHeladoConFoto extends javax.swing.JInternalFrame {
             }
         });
 
-        jLabel1.setText("Nombre:");
-
         txtImagen.setToolTipText("Ingrese la imagen del helado.");
-
-        jLabel2.setText("Imagen:");
 
         btnBucarImagen.setText("...");
         btnBucarImagen.addActionListener(new java.awt.event.ActionListener() {
@@ -102,47 +109,54 @@ public class frmHeladoConFoto extends javax.swing.JInternalFrame {
             }
         });
 
+        lblNombre.setText("Nombre:");
+
+        jLabel1.setText("Ruta:");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(58, 58, 58)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(btnAgregar)
-                        .addGap(36, 36, 36)
-                        .addComponent(btnSalir))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel1))
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(btnAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(22, 22, 22)
+                        .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                        .addGap(49, 49, 49)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(txtImagen, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(lblNombre)
+                                .addGap(18, 18, 18)
+                                .addComponent(txtNombreHelado, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtNombreHelado, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtImagen, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(18, 18, 18)
-                .addComponent(btnBucarImagen, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnBucarImagen, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
                 .addComponent(lblImagen, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(40, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(66, 66, 66)
+                .addGap(73, 73, 73)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtNombreHelado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1))
-                .addGap(18, 18, 18)
+                    .addComponent(lblNombre))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtImagen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2)
-                    .addComponent(btnBucarImagen))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 123, Short.MAX_VALUE)
+                    .addComponent(btnBucarImagen)
+                    .addComponent(jLabel1))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 46, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnAgregar)
-                    .addComponent(btnSalir))
+                    .addComponent(btnAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(64, 64, 64))
             .addGroup(layout.createSequentialGroup()
                 .addGap(51, 51, 51)
@@ -156,19 +170,19 @@ public class frmHeladoConFoto extends javax.swing.JInternalFrame {
     private void btnBucarImagenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBucarImagenActionPerformed
         int respuesta;
         String ruta;
-        
+
         JFileChooser VentanaArchivos = new JFileChooser();
         respuesta = VentanaArchivos.showOpenDialog(this);
-        
+
         if (respuesta == JFileChooser.APPROVE_OPTION) {
             ruta = VentanaArchivos.getSelectedFile().toString();
             txtImagen.setText(ruta);
             this.setFoto(ruta);
-            
+
         }
 
     }//GEN-LAST:event_btnBucarImagenActionPerformed
-    
+
     public void setFoto(String ruta) {
         ImageIcon img = new ImageIcon(ruta);
         Image imagn = img.getImage();
@@ -187,14 +201,32 @@ public class frmHeladoConFoto extends javax.swing.JInternalFrame {
 
     }//GEN-LAST:event_formInternalFrameClosing
 
+    private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
+        Helado h = new Helado();
+
+        if ((txtNombreHelado.getText().equals("")) || (txtImagen.getText().equals(""))) {
+            JOptionPane.showMessageDialog(null, "Falta datos");
+        } else {
+            h.setSabor(txtNombreHelado.getText());
+            h.setRuta(txtImagen.getText());
+            Helado.guardarUnHelado(h);
+        }
+
+
+    }//GEN-LAST:event_btnAgregarActionPerformed
+
+    private void txtNombreHeladoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombreHeladoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNombreHeladoActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAgregar;
     private javax.swing.JButton btnBucarImagen;
     private javax.swing.JButton btnSalir;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel lblImagen;
+    private javax.swing.JLabel lblNombre;
     private javax.swing.JTextField txtImagen;
     private javax.swing.JTextField txtNombreHelado;
     // End of variables declaration//GEN-END:variables
