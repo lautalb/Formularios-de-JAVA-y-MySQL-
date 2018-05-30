@@ -109,7 +109,8 @@ public class frmPrincipal extends javax.swing.JFrame {
         //frmListadoHelados formulario = new frmListadoHelados();
         //this.controlarInstancia(formulario);
         try {
-            if (frmListadoHelados.PuedoCrearOtra()) {
+            //if (frmListadoHelados.PuedoCrearOtra()) 
+            {
                 frmListadoHelados formulario = new frmListadoHelados();
                 PanelPrincipal.add(formulario);
                 formulario.setVisible(true);
@@ -118,6 +119,7 @@ public class frmPrincipal extends javax.swing.JFrame {
 
             }
         } catch (Exception e) {
+            System.out.println("error "+e.toString());
             JOptionPane.showMessageDialog(null, "Ya tiene la ventana abierta!");
         }
 

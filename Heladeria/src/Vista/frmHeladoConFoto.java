@@ -205,13 +205,12 @@ public class frmHeladoConFoto extends javax.swing.JInternalFrame {
         Helado h = new Helado();
 
         if ((txtNombreHelado.getText().equals("")) || (txtImagen.getText().equals(""))) {
-            JOptionPane.showMessageDialog(null, "Falta datos");
+            JOptionPane.showMessageDialog(null, "Faltan datos");
         } else {
             h.setSabor(txtNombreHelado.getText());
             h.setRuta(txtImagen.getText());
             Helado.guardarUnHelado(h);
         }
-
 
     }//GEN-LAST:event_btnAgregarActionPerformed
 

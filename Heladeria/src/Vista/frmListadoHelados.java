@@ -6,8 +6,11 @@
 package Vista;
 
 import Entidades.Helado;
+import Entidades.miExcepcion;
 import java.util.ArrayList;
 import java.util.Iterator;
+import javax.swing.ImageIcon;
+import javax.swing.JLabel;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -15,19 +18,30 @@ import javax.swing.table.DefaultTableModel;
  * @author alumno
  */
 public class frmListadoHelados extends javax.swing.JInternalFrame {
+
     private static int cantidad;
+
     /**
      * Creates new form frmListadoHelados
      */
     public frmListadoHelados() throws Exception {
         initComponents();
-        if(cantidad==1){
+        if (cantidad == 1) {
             throw new Exception();
         }
-        cantidad=1;
+        cantidad = 1;
         //llamamos al metodo llenar helados para que apenas inicie se llene
-        this.llenarTablaHelados();
+        try {
+            this.llenarTablaHelados();
+
+        } catch (Exception error) {
+            System.out.println("error el llenar tabla");
+            throw error;
+
+        }
+
     }
+
     public static boolean PuedoCrearOtra() {
 
         boolean retorno = false;
@@ -50,18 +64,21 @@ public class frmListadoHelados extends javax.swing.JInternalFrame {
         Iterator iter = lista.iterator();
         Object[] columnas = new Object[3];
 
-        while (iter.hasNext()) {
+        try {
+            while (iter.hasNext()) {
             Helado h = (Helado) iter.next();
             columnas[0] = h.getId();
             columnas[1] = h.getSabor();
-            
-            
-            columnas[2] = h.getRuta();
+
+     
+            JLabel lb= new JLabel(new ImageIcon(getClass().getResource("/img/heladoChocolate.jpg")));
+            columnas[2] = lb;
 
             modelo.addRow(columnas);
         }
-        
-
+        } catch (Exception e) {
+            System.out.println(e.toString());
+        }
     }
 
     /**
@@ -136,13 +153,13 @@ public class frmListadoHelados extends javax.swing.JInternalFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(33, 33, 33)
                 .addComponent(btnActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 231, Short.MAX_VALUE)
                 .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(32, 32, 32))
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 506, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(44, Short.MAX_VALUE))
+                .addComponent(jScrollPane1)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -162,12 +179,12 @@ public class frmListadoHelados extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
-        this.cantidad=0;
+        this.cantidad = 0;
         this.hide();
     }//GEN-LAST:event_btnSalirActionPerformed
 
     private void formInternalFrameClosing(javax.swing.event.InternalFrameEvent evt) {//GEN-FIRST:event_formInternalFrameClosing
-        this.cantidad=0;
+        this.cantidad = 0;
     }//GEN-LAST:event_formInternalFrameClosing
 
     private void btnActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarActionPerformed
