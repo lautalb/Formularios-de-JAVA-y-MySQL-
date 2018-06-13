@@ -6,6 +6,7 @@
 package Vista;
 
 import Entidades.Helado;
+import Entidades.Venta;
 import java.util.Iterator;
 
 /**
@@ -13,7 +14,7 @@ import java.util.Iterator;
  * @author alumno
  */
 public class frmVenta extends javax.swing.JInternalFrame {
-
+    private double precio=50;
     /**
      * Creates new form frmVenta
      */
@@ -53,6 +54,11 @@ public class frmVenta extends javax.swing.JInternalFrame {
         });
 
         btnAceptar.setText("Aceptar");
+        btnAceptar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAceptarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -85,6 +91,17 @@ public class frmVenta extends javax.swing.JInternalFrame {
     private void cbHeladosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbHeladosActionPerformed
         
     }//GEN-LAST:event_cbHeladosActionPerformed
+
+    private void btnAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarActionPerformed
+        Venta v = new Venta();
+        v.setHelado(cbHelados.getSelectedItem().toString());
+        v.setCantidad(Integer.parseInt(txtCantidad.getText()));
+        v.setImporte(this.precio*v.getCantidad());
+        v.setFecha("18/05/1999");
+        v.setIdVenta(0);
+        
+        Venta.guardarVenta(v);
+    }//GEN-LAST:event_btnAceptarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

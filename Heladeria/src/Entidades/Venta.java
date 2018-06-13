@@ -5,6 +5,9 @@
  */
 package Entidades;
 
+import dao.VentaDao;
+import java.util.ArrayList;
+
 /**
  *
  * @author alumno
@@ -66,6 +69,16 @@ public class Venta {
 
     public void setFecha(String fecha) {
         this.fecha = fecha;
+    }
+    
+    public static void guardarVenta(Venta venta){
+        VentaDao v = new VentaDao();
+        v.guardarHelado(venta);
+    }
+    
+    public static ArrayList<Venta> listarVentas(){
+        VentaDao venta= new VentaDao();
+        return venta.listarVentas();
     }
 
 }

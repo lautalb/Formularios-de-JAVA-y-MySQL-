@@ -55,6 +55,7 @@ public class frmPrincipal extends javax.swing.JFrame {
         btnNuevoHelado = new javax.swing.JMenuItem();
         btnListarHelados = new javax.swing.JMenuItem();
         miVender = new javax.swing.JMenuItem();
+        miListarVentas = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -95,6 +96,14 @@ public class frmPrincipal extends javax.swing.JFrame {
             }
         });
         mHelado.add(miVender);
+
+        miListarVentas.setText("Listar ventas");
+        miListarVentas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                miListarVentasActionPerformed(evt);
+            }
+        });
+        mHelado.add(miListarVentas);
 
         jMenuBar1.add(mHelado);
 
@@ -174,6 +183,18 @@ public class frmPrincipal extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_miVenderActionPerformed
 
+    private void miListarVentasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miListarVentasActionPerformed
+        try {
+            frmListadoVentas frm = new frmListadoVentas();
+            PanelPrincipal.add(frm);
+            frm.setMaximizable(true);
+            frm.setClosable(true);
+            frm.setVisible(true);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Ya tiene la ventana abierta!");
+        }
+    }//GEN-LAST:event_miListarVentasActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -215,6 +236,7 @@ public class frmPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem btnNuevoHelado;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenu mHelado;
+    private javax.swing.JMenuItem miListarVentas;
     private javax.swing.JMenuItem miVender;
     // End of variables declaration//GEN-END:variables
 }
