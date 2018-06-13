@@ -127,7 +127,7 @@ public class frmPrincipal extends javax.swing.JFrame {
         //frmListadoHelados formulario = new frmListadoHelados();
         //this.controlarInstancia(formulario);
         try {
-            //if (frmListadoHelados.PuedoCrearOtra()) 
+            if (frmListadoHelados.PuedoCrearOtra()) 
             {
                 frmListadoHelados formulario = new frmListadoHelados();
                 PanelPrincipal.add(formulario);
