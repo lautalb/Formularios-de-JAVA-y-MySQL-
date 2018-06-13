@@ -54,6 +54,7 @@ public class frmPrincipal extends javax.swing.JFrame {
         mHelado = new javax.swing.JMenu();
         btnNuevoHelado = new javax.swing.JMenuItem();
         btnListarHelados = new javax.swing.JMenuItem();
+        miVender = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -86,6 +87,14 @@ public class frmPrincipal extends javax.swing.JFrame {
             }
         });
         mHelado.add(btnListarHelados);
+
+        miVender.setText("Vender");
+        miVender.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                miVenderActionPerformed(evt);
+            }
+        });
+        mHelado.add(miVender);
 
         jMenuBar1.add(mHelado);
 
@@ -153,6 +162,18 @@ public class frmPrincipal extends javax.swing.JFrame {
 
     }//GEN-LAST:event_btnNuevoHeladoActionPerformed
 
+    private void miVenderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miVenderActionPerformed
+        try {
+            frmVenta frm = new frmVenta();
+            PanelPrincipal.add(frm);
+            frm.setMaximizable(true);
+            frm.setClosable(true);
+            frm.setVisible(true);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Ya tiene la ventana abierta!");
+        }
+    }//GEN-LAST:event_miVenderActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -194,5 +215,6 @@ public class frmPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem btnNuevoHelado;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenu mHelado;
+    private javax.swing.JMenuItem miVender;
     // End of variables declaration//GEN-END:variables
 }
