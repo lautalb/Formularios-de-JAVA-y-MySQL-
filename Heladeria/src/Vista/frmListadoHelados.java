@@ -7,6 +7,7 @@ package Vista;
 
 import Entidades.Helado;
 import Entidades.miExcepcion;
+import img.ImagenesTabla;
 import java.util.ArrayList;
 import java.util.Iterator;
 import javax.swing.ImageIcon;
@@ -53,9 +54,10 @@ public class frmListadoHelados extends javax.swing.JInternalFrame {
     }
 
     public void llenarTablaHelados() {
+        tbListarHelados.setDefaultRenderer(Object.class, new ImagenesTabla());
         DefaultTableModel modelo = new DefaultTableModel();
         tbListarHelados.setModel(modelo);
-
+        tbListarHelados.setRowHeight(50);
         modelo.addColumn("IdHelado");
         modelo.addColumn("Sabor");
         modelo.addColumn("Image");
@@ -71,7 +73,7 @@ public class frmListadoHelados extends javax.swing.JInternalFrame {
             columnas[1] = h.getSabor();
 
      
-            JLabel lb= new JLabel(new ImageIcon(getClass().getResource("/img/heladoChocolate.jpg")));
+            JLabel lb= new JLabel(new ImageIcon(getClass().getResource(h.getRuta())));
             columnas[2] = lb;
 
             modelo.addRow(columnas);
@@ -188,7 +190,14 @@ public class frmListadoHelados extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_formInternalFrameClosing
 
     private void btnActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarActionPerformed
-        // TODO add your handling code here:
+        try {
+            this.llenarTablaHelados();
+
+        } catch (Exception error) {
+            System.out.println("error el llenar tabla");
+            throw error;
+
+        }
     }//GEN-LAST:event_btnActualizarActionPerformed
 
 
