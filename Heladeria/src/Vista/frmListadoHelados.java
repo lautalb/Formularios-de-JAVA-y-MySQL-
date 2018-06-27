@@ -72,7 +72,7 @@ public class frmListadoHelados extends javax.swing.JInternalFrame {
             columnas[0] = h.getId();
             columnas[1] = h.getSabor();
 
-     
+                System.out.println(h.getRuta());
             JLabel lb= new JLabel(new ImageIcon(getClass().getResource(h.getRuta())));
             columnas[2] = lb;
 

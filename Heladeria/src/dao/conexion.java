@@ -18,7 +18,7 @@ public class conexion {
     String jdbc_url = "jdbc:mysql://localhost:3306/";
     String jdbc_user = "root";
     String jdbc_pass = "";
-    String bd = "heladeria";
+    String bd = "Heladeria";
 
     private static Connection cn;
 

@@ -14,7 +14,7 @@ import javax.swing.table.DefaultTableCellRenderer;
  *
  * @author alumno
  */
-public class ImagenesTabla extends DefaultTableCellRenderer {
+public class ImagenesTabla extends DefaultTableCellRenderer{
 
     @Override
     public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
@@ -25,6 +25,5 @@ public class ImagenesTabla extends DefaultTableCellRenderer {
         
         return super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column); //To change body of generated methods, choose Tools | Templates.
     }
-    
     
 }

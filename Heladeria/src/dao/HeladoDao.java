@@ -24,7 +24,7 @@ public class HeladoDao {
             conexion con = new conexion();
             Connection conn = con.RetornarConeccion();
 
-            PreparedStatement ps = conn.prepareStatement("INSERT INTO HELADO (SABOR, RUTA) VALUES (?,?)");
+            PreparedStatement ps = conn.prepareStatement("INSERT INTO Helado (Sabor, Ruta) VALUES (?,?)");
             ps.setString(1, helado.getSabor());
             ps.setString(2, helado.getRuta());
             ps.executeUpdate();
@@ -47,7 +47,7 @@ public class HeladoDao {
             conexion con = new conexion();
             Connection conn = con.RetornarConeccion();
 
-            PreparedStatement ps = conn.prepareStatement("SELECT * FROM HELADO");
+            PreparedStatement ps = conn.prepareStatement("SELECT * FROM Helado");
             ResultSet rs = ps.executeQuery();
 
             while (rs.next()) {

@@ -7,6 +7,7 @@ package Vista;
 
 import Entidades.Helado;
 import java.awt.Image;
+import java.io.File;
 import javax.swing.JFileChooser;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
@@ -18,7 +19,7 @@ import javax.swing.JOptionPane;
 public class frmHeladoConFoto extends javax.swing.JInternalFrame {
 
     private static int cantidad;
-
+    private static String rutaDeArchivo;
     /**
      * Creates new form frmHeladoConFoto
      */
@@ -169,20 +170,47 @@ public class frmHeladoConFoto extends javax.swing.JInternalFrame {
 
     private void btnBucarImagenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBucarImagenActionPerformed
         int respuesta;
-        String ruta;
+       
+        String nombre;
+        String exten=".jpg";
 
         JFileChooser VentanaArchivos = new JFileChooser();
         respuesta = VentanaArchivos.showOpenDialog(this);
 
         if (respuesta == JFileChooser.APPROVE_OPTION) {
-            ruta = VentanaArchivos.getSelectedFile().toString();
-            txtImagen.setText(ruta);
-            this.setFoto(ruta);
+            rutaDeArchivo = VentanaArchivos.getSelectedFile().getPath();
+         
+            this.setFoto(rutaDeArchivo);
+            
+            
+            File archivoBase = new File(rutaDeArchivo);
+            exten = exten.substring(exten.length()-3);
+            
+            nombre = VentanaArchivos.getSelectedFile().getName(); 
+            nombre="/img/"+txtNombreHelado.getText()+"."+exten;
+            File ficheroDestino = new File( "./src"+nombre);
+            archivoBase.renameTo(ficheroDestino);
+            txtImagen.setText(nombre); 
+            /*
+            archivoBase.renameTo(ficheroDestino);
+            nombre ="/img/" + VentanaArchivos.getSelectedFile().getName();
+            exten = exten.substring(exten.length()-3);
+            nombre="/img/"+txtNombreHelado.getText()+"."+exten;
+            txtImagen.setText(nombre);   
+            File archivoBase = new File(rutaDeArchivo);
+            File ficheroDestino = new File("/src"+txtImagen.getText());
+          
+            
+            /*
+            File archivoBase = new File(ruta);
+            File ficheroDestino = new File(nombre);
+            archivoBase.renameTo(ficheroDestino);*/
 
         }
 
     }//GEN-LAST:event_btnBucarImagenActionPerformed
-
+    
+    
     public void setFoto(String ruta) {
         ImageIcon img = new ImageIcon(ruta);
         Image imagn = img.getImage();
@@ -208,7 +236,14 @@ public class frmHeladoConFoto extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(null, "Faltan datos");
         } else {
             h.setSabor(txtNombreHelado.getText());
+            /*
+            File archivoBase = new File(rutaDeArchivo);
+            File ficheroDestino = new File("/src"+txtImagen.getText());
+            archivoBase.renameTo(ficheroDestino);*/
+            
+            
             h.setRuta(txtImagen.getText());
+            
             Helado.guardarUnHelado(h);
         }
 

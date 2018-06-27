@@ -24,6 +24,9 @@ public class Heladeria {
         frm.setExtendedState(frm.MAXIMIZED_BOTH);
         frm.setVisible(true);
 
+        //String exten = "123456789";
+        //System.out.println(exten.substring(exten.length()-3));
+
 
 
         

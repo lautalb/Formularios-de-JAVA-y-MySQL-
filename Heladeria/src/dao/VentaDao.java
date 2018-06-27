@@ -23,7 +23,7 @@ public class VentaDao {
             conexion con = new conexion();
             Connection conn = con.RetornarConeccion();
 
-            PreparedStatement ps = conn.prepareStatement("INSERT INTO VENTA (HELADO, CANTIDAD, IMPORTE, FECHA) VALUES (?,?,?,?)");
+            PreparedStatement ps = conn.prepareStatement("INSERT INTO Venta (helado, cantidad, importe, fecha) VALUES (?,?,?,?)");
             ps.setString(1, venta.getHelado());
             ps.setInt(2, venta.getCantidad());
             ps.setDouble(3, venta.getImporte());
@@ -48,7 +48,7 @@ public class VentaDao {
             conexion con = new conexion();
             Connection conn = con.RetornarConeccion();
 
-            PreparedStatement ps = conn.prepareStatement("SELECT * FROM VENTA");
+            PreparedStatement ps = conn.prepareStatement("SELECT * FROM Venta");
             ResultSet rs = ps.executeQuery();
 
             while (rs.next()) {
