@@ -131,14 +131,14 @@ public class frmListadoHelados extends javax.swing.JInternalFrame {
         pmContextual = new javax.swing.JPopupMenu();
         miModificar = new javax.swing.JMenuItem();
         miEliminar = new javax.swing.JMenuItem();
-        jLabel1 = new javax.swing.JLabel();
+        lblListadoHelados = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tbListarHelados = new javax.swing.JTable();
         btnSalir = new javax.swing.JButton();
         btnActualizar = new javax.swing.JButton();
         txtBuscar = new javax.swing.JTextField();
         btnBuscar = new javax.swing.JButton();
-        jLabel2 = new javax.swing.JLabel();
+        lblNombre = new javax.swing.JLabel();
         lblNombreModificar = new javax.swing.JLabel();
         txtNombreModificar = new javax.swing.JTextField();
         btnModificar = new javax.swing.JButton();
@@ -172,20 +172,25 @@ public class frmListadoHelados extends javax.swing.JInternalFrame {
             }
         });
 
-        jLabel1.setText("Listado Helados");
+        lblListadoHelados.setText("Listado Helados");
 
         tbListarHelados.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+
             }
         ));
         tbListarHelados.setComponentPopupMenu(pmContextual);
+        tbListarHelados.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tbListarHeladosMouseClicked(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                tbListarHeladosMouseReleased(evt);
+            }
+        });
         jScrollPane1.setViewportView(tbListarHelados);
 
         btnSalir.setText("Salir");
@@ -209,7 +214,7 @@ public class frmListadoHelados extends javax.swing.JInternalFrame {
             }
         });
 
-        jLabel2.setText("Nombre:");
+        lblNombre.setText("Nombre:");
 
         lblNombreModificar.setText("Nombre:");
 
@@ -220,7 +225,7 @@ public class frmListadoHelados extends javax.swing.JInternalFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jLabel1)
+                .addComponent(lblListadoHelados)
                 .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
@@ -242,7 +247,7 @@ public class frmListadoHelados extends javax.swing.JInternalFrame {
                                 .addGap(18, 18, 18)
                                 .addComponent(txtNombreModificar))
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel2)
+                                .addComponent(lblNombre)
                                 .addGap(18, 18, 18)
                                 .addComponent(txtBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -255,14 +260,14 @@ public class frmListadoHelados extends javax.swing.JInternalFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1)
+                .addComponent(lblListadoHelados)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(26, 26, 26)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnBuscar)
-                    .addComponent(jLabel2))
+                    .addComponent(lblNombre))
                 .addGap(45, 45, 45)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblNombreModificar)
@@ -309,15 +314,29 @@ public class frmListadoHelados extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnBuscarActionPerformed
 
     private void miModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miModificarActionPerformed
-        txtNombreModificar.setVisible(true);
+         txtNombreModificar.setVisible(true);
         btnModificar.setVisible(true);
         lblNombreModificar.setVisible(true);
+        
         for (int i = 0; i < tbListarHelados.getRowCount(); i++) {
-            if(tbListarHelados.getRowSelectionAllowed()){
-                txtNombreModificar.setText(String.valueOf(tbListarHelados.getValueAt(i, 1)));
-            }
+            String nombre = String.valueOf(tbListarHelados.getValueAt(i, 1));
+            String id = String.valueOf(tbListarHelados.getValueAt(i, 0));
+            int fila = tbListarHelados.getSelectedRow();
+            
+            txtNombreModificar.setText(String.valueOf(tbListarHelados.getValueAt(fila, 1)));
+               
         }
+        
     }//GEN-LAST:event_miModificarActionPerformed
+
+    private void tbListarHeladosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbListarHeladosMouseClicked
+     
+    }//GEN-LAST:event_tbListarHeladosMouseClicked
+
+    
+    private void tbListarHeladosMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbListarHeladosMouseReleased
+         
+    }//GEN-LAST:event_tbListarHeladosMouseReleased
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -325,9 +344,9 @@ public class frmListadoHelados extends javax.swing.JInternalFrame {
     private javax.swing.JButton btnBuscar;
     private javax.swing.JButton btnModificar;
     private javax.swing.JButton btnSalir;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel lblListadoHelados;
+    private javax.swing.JLabel lblNombre;
     private javax.swing.JLabel lblNombreModificar;
     private javax.swing.JMenuItem miEliminar;
     private javax.swing.JMenuItem miModificar;

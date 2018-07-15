@@ -92,4 +92,20 @@ public class HeladoDao {
 
         return lista;
     }
+    
+    public void modificarHelado(String nombre, int idHelado){
+        try {
+            conexion con = new conexion();
+            Connection conn = con.RetornarConeccion();
+
+            PreparedStatement ps = conn.prepareStatement("UPDATE Helado SET sabor = ? WHERE idHelado = ? ");
+            ps.setString(1, nombre);
+            ps.setInt(2, idHelado);
+            
+            ps.executeUpdate();
+            
+        } catch (Exception e) {
+            System.out.println("Error al modificar");
+        }
+    }
 }
