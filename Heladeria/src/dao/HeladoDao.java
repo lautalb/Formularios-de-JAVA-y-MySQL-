@@ -6,6 +6,8 @@
 package dao;
 
 import Entidades.Helado;
+import java.io.File;
+import java.io.FileInputStream;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -36,6 +38,31 @@ public class HeladoDao {
             
         }
 
+    }
+    
+    public void guardarHeladoImagen(Helado helado){
+        try {
+            conexion con = new conexion();
+            Connection conn = con.RetornarConeccion();
+
+            String insert = "INSERT INTO Helado (Sabor, Ruta) VALUES (?,?)";
+            PreparedStatement ps = null;
+            FileInputStream fi = null;
+            
+            try {
+                File file = new File(helado.getRuta());
+                fi = new FileInputStream(file);
+                
+                ps = conn.prepareStatement(insert);
+                ps.setString(1, helado.getSabor());
+                ps.setBinaryStream(2, fi);
+                
+                ps.executeUpdate();
+            } catch (Exception e) {
+                System.out.println("Error al guardar");
+            }
+        } catch (Exception e) {
+        }
     }
 
     public ArrayList<Helado> listarHelados() {

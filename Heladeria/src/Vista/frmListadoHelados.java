@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
+import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -19,9 +20,9 @@ import javax.swing.table.DefaultTableModel;
  * @author alumno
  */
 public class frmListadoHelados extends javax.swing.JInternalFrame {
-
+    
     private static int cantidad;
-
+    
     /**
      * Creates new form frmListadoHelados
      */
@@ -40,7 +41,9 @@ public class frmListadoHelados extends javax.swing.JInternalFrame {
             throw error;
 
         }
-
+        txtNombreModificar.setVisible(false);
+        btnModificar.setVisible(false);
+        lblNombreModificar.setVisible(false);
     }
 
     public static boolean PuedoCrearOtra() {
@@ -51,6 +54,38 @@ public class frmListadoHelados extends javax.swing.JInternalFrame {
         }
 
         return retorno;
+    }
+
+    public void llenarTabla() {
+
+        tbListarHelados.setDefaultRenderer(Object.class, new ImagenesTabla());
+        DefaultTableModel modelo = new DefaultTableModel();
+        tbListarHelados.setModel(modelo);
+        tbListarHelados.setRowHeight(50);
+        modelo.addColumn("IdHelado");
+        modelo.addColumn("Sabor");
+        modelo.addColumn("Image");
+
+        ArrayList<Helado> lista = Helado.ListarHelados();
+        Iterator iter = lista.iterator();
+        Object[] columnas = new Object[3];
+
+        try {
+            while (iter.hasNext()) {
+                Helado h = (Helado) iter.next();
+                columnas[0] = h.getId();
+                columnas[1] = h.getSabor();
+
+                System.out.println(h.getRuta());
+                JLabel lb = new JLabel(new ImageIcon(getClass().getResource(h.getRuta())));
+
+                columnas[2] = lb;
+
+                modelo.addRow(columnas);
+            }
+        } catch (Exception e) {
+            System.out.println(e.toString());
+        }
     }
 
     public void llenarTablaHelados() {
@@ -68,16 +103,17 @@ public class frmListadoHelados extends javax.swing.JInternalFrame {
 
         try {
             while (iter.hasNext()) {
-            Helado h = (Helado) iter.next();
-            columnas[0] = h.getId();
-            columnas[1] = h.getSabor();
+                Helado h = (Helado) iter.next();
+                columnas[0] = h.getId();
+                columnas[1] = h.getSabor();
 
                 System.out.println(h.getRuta());
-            JLabel lb= new JLabel(new ImageIcon(getClass().getResource(h.getRuta())));
-            columnas[2] = lb;
+                JLabel lb = new JLabel(new ImageIcon(getClass().getResource(h.getRuta())));
 
-            modelo.addRow(columnas);
-        }
+                columnas[2] = lb;
+
+                modelo.addRow(columnas);
+            }
         } catch (Exception e) {
             System.out.println(e.toString());
         }
@@ -92,11 +128,31 @@ public class frmListadoHelados extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        pmContextual = new javax.swing.JPopupMenu();
+        miModificar = new javax.swing.JMenuItem();
+        miEliminar = new javax.swing.JMenuItem();
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tbListarHelados = new javax.swing.JTable();
         btnSalir = new javax.swing.JButton();
         btnActualizar = new javax.swing.JButton();
+        txtBuscar = new javax.swing.JTextField();
+        btnBuscar = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
+        lblNombreModificar = new javax.swing.JLabel();
+        txtNombreModificar = new javax.swing.JTextField();
+        btnModificar = new javax.swing.JButton();
+
+        miModificar.setText("Modificar");
+        miModificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                miModificarActionPerformed(evt);
+            }
+        });
+        pmContextual.add(miModificar);
+
+        miEliminar.setText("Eliminar");
+        pmContextual.add(miEliminar);
 
         addInternalFrameListener(new javax.swing.event.InternalFrameListener() {
             public void internalFrameActivated(javax.swing.event.InternalFrameEvent evt) {
@@ -129,6 +185,7 @@ public class frmListadoHelados extends javax.swing.JInternalFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        tbListarHelados.setComponentPopupMenu(pmContextual);
         jScrollPane1.setViewportView(tbListarHelados);
 
         btnSalir.setText("Salir");
@@ -145,6 +202,19 @@ public class frmListadoHelados extends javax.swing.JInternalFrame {
             }
         });
 
+        btnBuscar.setText("Buscar");
+        btnBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBuscarActionPerformed(evt);
+            }
+        });
+
+        jLabel2.setText("Nombre:");
+
+        lblNombreModificar.setText("Nombre:");
+
+        btnModificar.setText("Modificar");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -153,15 +223,33 @@ public class frmListadoHelados extends javax.swing.JInternalFrame {
                 .addComponent(jLabel1)
                 .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
-                .addGap(33, 33, 33)
-                .addComponent(btnActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 231, Short.MAX_VALUE)
-                .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(32, 32, 32))
-            .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jScrollPane1)
                 .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addGap(33, 33, 33)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(btnActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 295, Short.MAX_VALUE)
+                        .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(32, 32, 32))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(32, 32, 32)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(lblNombreModificar)
+                                .addGap(18, 18, 18)
+                                .addComponent(txtNombreModificar))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel2)
+                                .addGap(18, 18, 18)
+                                .addComponent(txtBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnBuscar)
+                            .addComponent(btnModificar))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -170,7 +258,17 @@ public class frmListadoHelados extends javax.swing.JInternalFrame {
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 63, Short.MAX_VALUE)
+                .addGap(26, 26, 26)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnBuscar)
+                    .addComponent(jLabel2))
+                .addGap(45, 45, 45)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblNombreModificar)
+                    .addComponent(txtNombreModificar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnModificar))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 107, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -200,12 +298,42 @@ public class frmListadoHelados extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_btnActualizarActionPerformed
 
+    private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
+        for (int i = 0; i < tbListarHelados.getRowCount(); i++) {
+            
+            String nombre = String.valueOf(tbListarHelados.getValueAt(i, 1));
+            if(nombre.equalsIgnoreCase(txtBuscar.getText())){
+                tbListarHelados.changeSelection(i,1,false,false);
+            }
+        }
+    }//GEN-LAST:event_btnBuscarActionPerformed
+
+    private void miModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miModificarActionPerformed
+        txtNombreModificar.setVisible(true);
+        btnModificar.setVisible(true);
+        lblNombreModificar.setVisible(true);
+        for (int i = 0; i < tbListarHelados.getRowCount(); i++) {
+            if(tbListarHelados.getRowSelectionAllowed()){
+                txtNombreModificar.setText(String.valueOf(tbListarHelados.getValueAt(i, 1)));
+            }
+        }
+    }//GEN-LAST:event_miModificarActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnActualizar;
+    private javax.swing.JButton btnBuscar;
+    private javax.swing.JButton btnModificar;
     private javax.swing.JButton btnSalir;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel lblNombreModificar;
+    private javax.swing.JMenuItem miEliminar;
+    private javax.swing.JMenuItem miModificar;
+    private javax.swing.JPopupMenu pmContextual;
     private javax.swing.JTable tbListarHelados;
+    private javax.swing.JTextField txtBuscar;
+    private javax.swing.JTextField txtNombreModificar;
     // End of variables declaration//GEN-END:variables
 }
