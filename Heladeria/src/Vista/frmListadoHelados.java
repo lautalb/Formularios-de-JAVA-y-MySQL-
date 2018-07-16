@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
@@ -20,9 +21,9 @@ import javax.swing.table.DefaultTableModel;
  * @author alumno
  */
 public class frmListadoHelados extends javax.swing.JInternalFrame {
-    
+
     private static int cantidad;
-    
+
     /**
      * Creates new form frmListadoHelados
      */
@@ -41,9 +42,9 @@ public class frmListadoHelados extends javax.swing.JInternalFrame {
             throw error;
 
         }
-        txtNombreModificar.setVisible(false);
-        btnModificar.setVisible(false);
-        lblNombreModificar.setVisible(false);
+        txtNombreModificar.setEnabled(false);
+        btnModificar.setEnabled(false);
+        lblNombreModificar.setEnabled(false);
     }
 
     public static boolean PuedoCrearOtra() {
@@ -152,6 +153,16 @@ public class frmListadoHelados extends javax.swing.JInternalFrame {
         pmContextual.add(miModificar);
 
         miEliminar.setText("Eliminar");
+        miEliminar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                miEliminarMouseClicked(evt);
+            }
+        });
+        miEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                miEliminarActionPerformed(evt);
+            }
+        });
         pmContextual.add(miEliminar);
 
         addInternalFrameListener(new javax.swing.event.InternalFrameListener() {
@@ -183,6 +194,7 @@ public class frmListadoHelados extends javax.swing.JInternalFrame {
             }
         ));
         tbListarHelados.setComponentPopupMenu(pmContextual);
+        tbListarHelados.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         tbListarHelados.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tbListarHeladosMouseClicked(evt);
@@ -219,6 +231,11 @@ public class frmListadoHelados extends javax.swing.JInternalFrame {
         lblNombreModificar.setText("Nombre:");
 
         btnModificar.setText("Modificar");
+        btnModificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnModificarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -273,7 +290,7 @@ public class frmListadoHelados extends javax.swing.JInternalFrame {
                     .addComponent(lblNombreModificar)
                     .addComponent(txtNombreModificar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnModificar))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 107, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 62, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -305,38 +322,78 @@ public class frmListadoHelados extends javax.swing.JInternalFrame {
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
         for (int i = 0; i < tbListarHelados.getRowCount(); i++) {
-            
+
             String nombre = String.valueOf(tbListarHelados.getValueAt(i, 1));
-            if(nombre.equalsIgnoreCase(txtBuscar.getText())){
-                tbListarHelados.changeSelection(i,1,false,false);
+            if (nombre.equalsIgnoreCase(txtBuscar.getText())) {
+                tbListarHelados.changeSelection(i, 1, false, false);
             }
         }
     }//GEN-LAST:event_btnBuscarActionPerformed
 
     private void miModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miModificarActionPerformed
-         txtNombreModificar.setVisible(true);
-        btnModificar.setVisible(true);
-        lblNombreModificar.setVisible(true);
-        
-        for (int i = 0; i < tbListarHelados.getRowCount(); i++) {
-            String nombre = String.valueOf(tbListarHelados.getValueAt(i, 1));
-            String id = String.valueOf(tbListarHelados.getValueAt(i, 0));
-            int fila = tbListarHelados.getSelectedRow();
-            
-            txtNombreModificar.setText(String.valueOf(tbListarHelados.getValueAt(fila, 1)));
-               
+        try {
+            txtNombreModificar.setEnabled(true);
+            btnModificar.setEnabled(true);
+            lblNombreModificar.setEnabled(true);
+
+            for (int i = 0; i < tbListarHelados.getRowCount(); i++) {
+                String nombre = String.valueOf(tbListarHelados.getValueAt(i, 1));
+                String id = String.valueOf(tbListarHelados.getValueAt(i, 0));
+                int fila = tbListarHelados.getSelectedRow();
+
+                txtNombreModificar.setText(String.valueOf(tbListarHelados.getValueAt(fila, 1)));
+
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Por favor, primero seleccione la fila con el click izquierdo y luego presione click derecho, modificar o eleiminar gracias!");
         }
-        
+
+
     }//GEN-LAST:event_miModificarActionPerformed
 
     private void tbListarHeladosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbListarHeladosMouseClicked
-     
+
     }//GEN-LAST:event_tbListarHeladosMouseClicked
 
-    
+
     private void tbListarHeladosMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbListarHeladosMouseReleased
-         
+
     }//GEN-LAST:event_tbListarHeladosMouseReleased
+
+    private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
+        int fila = tbListarHelados.getSelectedRow();
+
+        Helado h = new Helado();
+        h.setSabor(txtNombreModificar.getText());
+        h.setId(Integer.parseInt(String.valueOf(tbListarHelados.getValueAt(fila, 0))));
+        try {
+            Helado.modificarHelado(h);
+            JOptionPane.showMessageDialog(null, "Helado modificado con exito!");
+            txtNombreModificar.setText("");
+            txtNombreModificar.setEnabled(false);
+            btnModificar.setEnabled(false);
+            lblNombreModificar.setEnabled(false);
+            llenarTablaHelados();
+
+        } catch (Exception e) {
+            System.out.println("Error al modificar");
+        }
+
+    }//GEN-LAST:event_btnModificarActionPerformed
+
+    private void miEliminarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_miEliminarMouseClicked
+        
+    }//GEN-LAST:event_miEliminarMouseClicked
+
+    private void miEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miEliminarActionPerformed
+        int dialogBtn = JOptionPane.YES_NO_OPTION;
+        JOptionPane.showConfirmDialog(null, "Relamente quiere eliminar el helado: "+String.valueOf(tbListarHelados.getValueAt(tbListarHelados.getSelectedRow(), 1))+" ?", "Eliminar helado",dialogBtn);
+        if (dialogBtn == JOptionPane.YES_OPTION) {
+            
+            
+        }
+      
+    }//GEN-LAST:event_miEliminarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
