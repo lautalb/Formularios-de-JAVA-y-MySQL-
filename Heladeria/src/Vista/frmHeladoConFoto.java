@@ -10,6 +10,7 @@ import java.awt.Image;
 import java.io.File;
 import javax.swing.JFileChooser;
 import javax.swing.ImageIcon;
+import javax.swing.JInternalFrame;
 import javax.swing.JOptionPane;
 
 /**
@@ -241,10 +242,9 @@ public class frmHeladoConFoto extends javax.swing.JInternalFrame {
             File ficheroDestino = new File("/src"+txtImagen.getText());
             archivoBase.renameTo(ficheroDestino);*/
             
-            
             h.setRuta(txtImagen.getText());
-            
             Helado.guardarUnHelado(h);
+    
         }
 
     }//GEN-LAST:event_btnAgregarActionPerformed

@@ -66,4 +66,9 @@ public class Helado {
         HeladoDao h = new HeladoDao();
         h.modificarHelado(helado.getSabor(), helado.getId());
     }
+    
+    public static void eliminarHelado(Helado helado){
+        HeladoDao h = new HeladoDao();
+        h.eliminarHelado(helado.getId());
+    }
 }

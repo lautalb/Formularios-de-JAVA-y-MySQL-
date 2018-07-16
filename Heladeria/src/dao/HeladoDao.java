@@ -108,4 +108,20 @@ public class HeladoDao {
             System.out.println("Error al modificar");
         }
     }
+    
+    public void eliminarHelado(int idHelado){
+        try {
+            conexion con = new conexion();
+            Connection conn = con.RetornarConeccion();
+            
+            PreparedStatement ps = conn.prepareStatement("DELETE FROM helado WHERE idHelado = ? ");
+            ps.setInt(1, idHelado);
+            
+            ps.executeUpdate();
+            
+        } catch (Exception e) {
+            System.out.println("Error al eliminar");
+        }
+        
+    }
 }

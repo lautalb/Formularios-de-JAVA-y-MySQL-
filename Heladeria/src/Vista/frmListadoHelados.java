@@ -389,8 +389,14 @@ public class frmListadoHelados extends javax.swing.JInternalFrame {
         int dialogBtn = JOptionPane.YES_NO_OPTION;
         JOptionPane.showConfirmDialog(null, "Relamente quiere eliminar el helado: "+String.valueOf(tbListarHelados.getValueAt(tbListarHelados.getSelectedRow(), 1))+" ?", "Eliminar helado",dialogBtn);
         if (dialogBtn == JOptionPane.YES_OPTION) {
-            
-            
+             int fila = tbListarHelados.getSelectedRow();
+             
+             Helado helado = new Helado();
+             helado.setId(Integer.parseInt(String.valueOf(tbListarHelados.getValueAt(fila, 0))));
+             
+             Helado.eliminarHelado(helado);
+             JOptionPane.showMessageDialog(null, "Helado eliminado");
+             this.llenarTablaHelados();
         }
       
     }//GEN-LAST:event_miEliminarActionPerformed
