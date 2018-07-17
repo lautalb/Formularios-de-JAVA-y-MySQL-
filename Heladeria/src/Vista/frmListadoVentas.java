@@ -8,6 +8,7 @@ package Vista;
 import Entidades.Venta;
 import java.util.ArrayList;
 import java.util.Iterator;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -16,6 +17,7 @@ import javax.swing.table.DefaultTableModel;
  */
 public class frmListadoVentas extends javax.swing.JInternalFrame {
 private static int cantidad;
+private double resumen = 0;
     /**
      * Creates new form fmrListarVentas
      */
@@ -72,6 +74,7 @@ private static int cantidad;
         tbListarVentas = new javax.swing.JTable();
         btnSalir = new javax.swing.JButton();
         btnActualizar = new javax.swing.JButton();
+        btnResumen = new javax.swing.JButton();
 
         addInternalFrameListener(new javax.swing.event.InternalFrameListener() {
             public void internalFrameActivated(javax.swing.event.InternalFrameEvent evt) {
@@ -118,6 +121,13 @@ private static int cantidad;
             }
         });
 
+        btnResumen.setText("Resumen");
+        btnResumen.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnResumenActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -129,9 +139,11 @@ private static int cantidad;
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(22, 22, 22)
                 .addComponent(btnActualizar)
+                .addGap(33, 33, 33)
+                .addComponent(btnResumen)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnSalir)
-                .addGap(71, 71, 71))
+                .addGap(45, 45, 45))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -140,8 +152,9 @@ private static int cantidad;
                 .addGap(33, 33, 33)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnSalir)
-                    .addComponent(btnActualizar))
-                .addGap(0, 36, Short.MAX_VALUE))
+                    .addComponent(btnActualizar)
+                    .addComponent(btnResumen))
+                .addGap(0, 40, Short.MAX_VALUE))
         );
 
         pack();
@@ -161,9 +174,20 @@ private static int cantidad;
         this.llenarTablaVentas();
     }//GEN-LAST:event_btnActualizarActionPerformed
 
+    private void btnResumenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnResumenActionPerformed
+        for (int i = 0; i < tbListarVentas.getRowCount(); i++) {
+            
+            this.resumen = this.resumen + (Double.parseDouble(String.valueOf(tbListarVentas.getValueAt(i, 3))));
+            
+        }
+         JOptionPane.showMessageDialog(null, "El total del resumen es: "+this.resumen);
+       
+    }//GEN-LAST:event_btnResumenActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnActualizar;
+    private javax.swing.JButton btnResumen;
     private javax.swing.JButton btnSalir;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tbListarVentas;
