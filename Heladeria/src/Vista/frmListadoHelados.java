@@ -66,10 +66,11 @@ public class frmListadoHelados extends javax.swing.JInternalFrame {
         modelo.addColumn("IdHelado");
         modelo.addColumn("Sabor");
         modelo.addColumn("Image");
+        modelo.addColumn("Cantidad disponible");
 
         ArrayList<Helado> lista = Helado.ListarHelados();
         Iterator iter = lista.iterator();
-        Object[] columnas = new Object[3];
+        Object[] columnas = new Object[4];
 
         try {
             while (iter.hasNext()) {
@@ -81,6 +82,7 @@ public class frmListadoHelados extends javax.swing.JInternalFrame {
                 JLabel lb = new JLabel(new ImageIcon(getClass().getResource(h.getRuta())));
 
                 columnas[2] = lb;
+                columnas[3] = h.getCantidad();
 
                 modelo.addRow(columnas);
             }
@@ -97,10 +99,11 @@ public class frmListadoHelados extends javax.swing.JInternalFrame {
         modelo.addColumn("IdHelado");
         modelo.addColumn("Sabor");
         modelo.addColumn("Image");
+        modelo.addColumn("Cantidad disponible");
 
         ArrayList<Helado> lista = Helado.ListarHelados();
         Iterator iter = lista.iterator();
-        Object[] columnas = new Object[3];
+        Object[] columnas = new Object[4];
 
         try {
             while (iter.hasNext()) {
@@ -112,6 +115,7 @@ public class frmListadoHelados extends javax.swing.JInternalFrame {
                 JLabel lb = new JLabel(new ImageIcon(getClass().getResource(h.getRuta())));
 
                 columnas[2] = lb;
+                columnas[3] = h.getCantidad();
 
                 modelo.addRow(columnas);
             }
@@ -364,11 +368,11 @@ public class frmListadoHelados extends javax.swing.JInternalFrame {
     private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
         int fila = tbListarHelados.getSelectedRow();
 
-        Helado h = new Helado();
-        h.setSabor(txtNombreModificar.getText());
-        h.setId(Integer.parseInt(String.valueOf(tbListarHelados.getValueAt(fila, 0))));
+        Helado helado = new Helado();
+        helado.setSabor(txtNombreModificar.getText());
+        helado.setId(Integer.parseInt(String.valueOf(tbListarHelados.getValueAt(fila, 0))));
         try {
-            Helado.modificarHelado(h);
+            Helado.modificarHelado(helado);
             JOptionPane.showMessageDialog(null, "Helado modificado con exito!");
             txtNombreModificar.setText("");
             txtNombreModificar.setEnabled(false);

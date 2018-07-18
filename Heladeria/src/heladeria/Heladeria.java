@@ -20,16 +20,22 @@ public class Heladeria {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-       frmPrincipal frm = new frmPrincipal();
+       
+        frmPrincipal frm = new frmPrincipal();
         frm.setExtendedState(frm.MAXIMIZED_BOTH);
         frm.setVisible(true);
+        
+        /*
+        Helado helado = new Helado();
+        helado.setSabor("Chocolate negro");
+        
+        helado = Helado.buscarHelado(helado);
+        
+        System.out.println(helado.toString());
+        */
 
         //String exten = "123456789";
         //System.out.println(exten.substring(exten.length()-3));
-
-
-
-        
 //        
 //        Helado.guardarUnHelado(helado);
     }

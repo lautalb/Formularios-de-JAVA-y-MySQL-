@@ -60,6 +60,9 @@ public class frmHeladoConFoto extends javax.swing.JInternalFrame {
         lblImagen = new javax.swing.JLabel();
         lblNombre = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
+        lblCantidadDisponible = new javax.swing.JLabel();
+        txtCantidadDisponible = new javax.swing.JTextField();
+        lblKilos = new javax.swing.JLabel();
 
         setTitle("Nuevo Helado");
         setToolTipText("");
@@ -115,6 +118,10 @@ public class frmHeladoConFoto extends javax.swing.JInternalFrame {
 
         jLabel1.setText("Ruta:");
 
+        lblCantidadDisponible.setText("Cantidad disponible:");
+
+        lblKilos.setText("Kilos");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -128,17 +135,25 @@ public class frmHeladoConFoto extends javax.swing.JInternalFrame {
                         .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                         .addGap(49, 49, 49)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel1)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(txtImagen, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(lblNombre)
+                                .addComponent(lblCantidadDisponible)
                                 .addGap(18, 18, 18)
-                                .addComponent(txtNombreHelado, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(18, 18, 18)
-                        .addComponent(btnBucarImagen, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(txtCantidadDisponible, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(8, 8, 8)
+                                .addComponent(lblKilos))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jLabel1)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(txtImagen, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(lblNombre)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(txtNombreHelado, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(18, 18, 18)
+                                .addComponent(btnBucarImagen, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addGap(18, 18, 18)
                 .addComponent(lblImagen, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -155,7 +170,12 @@ public class frmHeladoConFoto extends javax.swing.JInternalFrame {
                     .addComponent(txtImagen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnBucarImagen)
                     .addComponent(jLabel1))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 46, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblCantidadDisponible)
+                    .addComponent(txtCantidadDisponible, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblKilos))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -233,7 +253,7 @@ public class frmHeladoConFoto extends javax.swing.JInternalFrame {
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
         Helado h = new Helado();
 
-        if ((txtNombreHelado.getText().equals("")) || (txtImagen.getText().equals(""))) {
+        if ((txtNombreHelado.getText().equals("")) || (txtImagen.getText().equals("")) || (txtCantidadDisponible.getText().equals(""))) {
             JOptionPane.showMessageDialog(null, "Faltan datos");
         } else {
             h.setSabor(txtNombreHelado.getText());
@@ -241,7 +261,7 @@ public class frmHeladoConFoto extends javax.swing.JInternalFrame {
             File archivoBase = new File(rutaDeArchivo);
             File ficheroDestino = new File("/src"+txtImagen.getText());
             archivoBase.renameTo(ficheroDestino);*/
-            
+            h.setCantidad(Integer.parseInt(txtCantidadDisponible.getText()));
             h.setRuta(txtImagen.getText());
             Helado.guardarUnHelado(h);
     
@@ -259,8 +279,11 @@ public class frmHeladoConFoto extends javax.swing.JInternalFrame {
     private javax.swing.JButton btnBucarImagen;
     private javax.swing.JButton btnSalir;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel lblCantidadDisponible;
     private javax.swing.JLabel lblImagen;
+    private javax.swing.JLabel lblKilos;
     private javax.swing.JLabel lblNombre;
+    private javax.swing.JTextField txtCantidadDisponible;
     private javax.swing.JTextField txtImagen;
     private javax.swing.JTextField txtNombreHelado;
     // End of variables declaration//GEN-END:variables

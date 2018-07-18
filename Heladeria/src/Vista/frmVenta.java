@@ -136,16 +136,37 @@ public class frmVenta extends javax.swing.JInternalFrame {
     private void cbHeladosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbHeladosActionPerformed
         
     }//GEN-LAST:event_cbHeladosActionPerformed
-
+    
+    public void actualizarCantidadDeHelado(Helado helado){
+        int cantidad = 0;
+        
+        helado = Helado.buscarHelado(helado);
+        cantidad = helado.getCantidad();
+        
+        helado.setCantidad(cantidad-(Integer.parseInt(txtCantidad.getText())));
+        Helado.modificarHelado(helado);
+        
+    }
+    
     private void btnAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarActionPerformed
+        Helado helado = new Helado();
+        
+        
         Venta v = new Venta();
         v.setHelado(cbHelados.getSelectedItem().toString());
+        //obtengo el helado para poder actualizar la cantidad disponible
+        helado.setSabor(cbHelados.getSelectedItem().toString());
+        this.actualizarCantidadDeHelado(helado);
+        //System.out.println(this.actualizarCantidadDeHelado(helado));
+        
         v.setCantidad(Integer.parseInt(txtCantidad.getText()));
         v.setImporte(this.precio*v.getCantidad());
         v.setFecha("18/05/1999");
         v.setIdVenta(0);
         
         Venta.guardarVenta(v);
+        helado.setCantidad(cantidad);
+        Helado.modificarHelado(helado);
     }//GEN-LAST:event_btnAceptarActionPerformed
 
     private void bntSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bntSalirActionPerformed

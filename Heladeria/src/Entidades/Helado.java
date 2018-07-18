@@ -17,6 +17,7 @@ public class Helado {
     private int id;
     private String sabor;
     private String ruta;
+    private int cantidad;
 
     public Helado() {
     }
@@ -50,6 +51,20 @@ public class Helado {
         this.sabor = sabor;
     }
 
+    public int getCantidad() {
+        return cantidad;
+    }
+
+    public void setCantidad(int cantidad) {
+        this.cantidad = cantidad;
+    }
+    
+    @Override
+    public String toString(){
+        
+        return "ID: "+this.id+"\nNombre: "+this.sabor+"\nCantidad: "+this.cantidad;
+    }
+
     public static ArrayList<Helado> ListarHelados() {
 
         HeladoDao helado = new HeladoDao();
@@ -64,11 +79,17 @@ public class Helado {
     
     public static void modificarHelado(Helado helado){
         HeladoDao h = new HeladoDao();
-        h.modificarHelado(helado.getSabor(), helado.getId());
+        h.modificarHelado(helado);
     }
     
     public static void eliminarHelado(Helado helado){
         HeladoDao h = new HeladoDao();
         h.eliminarHelado(helado.getId());
+    }
+    
+    public static Helado buscarHelado(Helado helado){
+        HeladoDao h = new HeladoDao();
+ 
+        return h.buscarHelado(helado);
     }
 }
