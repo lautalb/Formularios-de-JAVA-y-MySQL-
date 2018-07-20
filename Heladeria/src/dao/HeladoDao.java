@@ -75,7 +75,7 @@ public class HeladoDao {
             ps.setString(1, helado.getSabor());
             ResultSet rs = ps.executeQuery();
 
-            while (rs.next()) {
+            if (rs.next()) {
                 helado = new Helado();
                 helado.setId(Integer.parseInt(rs.getString("idHelado")));
                 helado.setSabor(rs.getString("sabor"));

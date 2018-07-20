@@ -154,8 +154,9 @@ public class frmVenta extends javax.swing.JInternalFrame {
         
         Venta v = new Venta();
         v.setHelado(cbHelados.getSelectedItem().toString());
-        //obtengo el helado para poder actualizar la cantidad disponible
+       
         helado.setSabor(cbHelados.getSelectedItem().toString());
+         //obtengo el helado para poder actualizar la cantidad disponible
         this.actualizarCantidadDeHelado(helado);
         //System.out.println(this.actualizarCantidadDeHelado(helado));
         

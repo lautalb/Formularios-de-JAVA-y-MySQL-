@@ -42,9 +42,13 @@ public class frmListadoHelados extends javax.swing.JInternalFrame {
             throw error;
 
         }
+        lblCantidad.setEnabled(false);
+        lblKilos.setEnabled(iconable);
+        txtCantidad.setEnabled(false);
         txtNombreModificar.setEnabled(false);
         btnModificar.setEnabled(false);
         lblNombreModificar.setEnabled(false);
+        btnCancelarModificacion.setEnabled(false);
     }
 
     public static boolean PuedoCrearOtra() {
@@ -147,6 +151,10 @@ public class frmListadoHelados extends javax.swing.JInternalFrame {
         lblNombreModificar = new javax.swing.JLabel();
         txtNombreModificar = new javax.swing.JTextField();
         btnModificar = new javax.swing.JButton();
+        lblCantidad = new javax.swing.JLabel();
+        txtCantidad = new javax.swing.JTextField();
+        lblKilos = new javax.swing.JLabel();
+        btnCancelarModificacion = new javax.swing.JButton();
 
         miModificar.setText("Modificar");
         miModificar.addActionListener(new java.awt.event.ActionListener() {
@@ -233,12 +241,23 @@ public class frmListadoHelados extends javax.swing.JInternalFrame {
 
         lblNombre.setText("Nombre:");
 
-        lblNombreModificar.setText("Nombre:");
+        lblNombreModificar.setText("Nombre a modificar:");
 
         btnModificar.setText("Modificar");
         btnModificar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnModificarActionPerformed(evt);
+            }
+        });
+
+        lblCantidad.setText("Cantidad:");
+
+        lblKilos.setText("Kilos");
+
+        btnCancelarModificacion.setText("Cancelar modificación");
+        btnCancelarModificacion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCancelarModificacionActionPerformed(evt);
             }
         });
 
@@ -252,31 +271,36 @@ public class frmListadoHelados extends javax.swing.JInternalFrame {
                 .addContainerGap())
             .addGroup(layout.createSequentialGroup()
                 .addGap(53, 53, 53)
-                .addComponent(btnActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(52, 52, 52))
-            .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(65, 65, 65)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(lblNombreModificar)
-                                .addGap(18, 18, 18)
-                                .addComponent(txtNombreModificar))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(lblNombre)
-                                .addGap(18, 18, 18)
-                                .addComponent(txtBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnBuscar)
-                            .addComponent(btnModificar)))
+                            .addComponent(lblListadoHelados)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(lblNombreModificar)
+                                    .addComponent(lblCantidad)
+                                    .addComponent(lblNombre))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(txtBuscar, javax.swing.GroupLayout.DEFAULT_SIZE, 153, Short.MAX_VALUE)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addGroup(layout.createSequentialGroup()
+                                            .addComponent(txtCantidad, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                            .addComponent(lblKilos)
+                                            .addGap(0, 81, Short.MAX_VALUE))
+                                        .addComponent(txtNombreModificar)))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(btnCancelarModificacion)
+                                    .addComponent(btnBuscar)
+                                    .addComponent(btnModificar))))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(lblListadoHelados)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(btnActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(52, 52, 52))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -295,7 +319,14 @@ public class frmListadoHelados extends javax.swing.JInternalFrame {
                     .addComponent(lblNombreModificar)
                     .addComponent(txtNombreModificar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnModificar))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 66, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnCancelarModificacion)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(lblCantidad)
+                        .addComponent(txtCantidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(lblKilos)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -337,17 +368,21 @@ public class frmListadoHelados extends javax.swing.JInternalFrame {
 
     private void miModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miModificarActionPerformed
         try {
+            btnCancelarModificacion.setEnabled(true);
             txtNombreModificar.setEnabled(true);
             btnModificar.setEnabled(true);
             lblNombreModificar.setEnabled(true);
+            txtCantidad.setEnabled(true);
 
             for (int i = 0; i < tbListarHelados.getRowCount(); i++) {
-                String nombre = String.valueOf(tbListarHelados.getValueAt(i, 1));
                 String id = String.valueOf(tbListarHelados.getValueAt(i, 0));
+                String nombre = String.valueOf(tbListarHelados.getValueAt(i, 1));
+                String cantidad = String.valueOf(tbListarHelados.getValueAt(i, 3));
+
                 int fila = tbListarHelados.getSelectedRow();
 
                 txtNombreModificar.setText(String.valueOf(tbListarHelados.getValueAt(fila, 1)));
-
+                txtCantidad.setText(String.valueOf(tbListarHelados.getValueAt(fila, 3)));
             }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Por favor, primero seleccione la fila con el click izquierdo y luego presione click derecho, modificar o eleiminar gracias!");
@@ -368,51 +403,74 @@ public class frmListadoHelados extends javax.swing.JInternalFrame {
     private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
         int fila = tbListarHelados.getSelectedRow();
 
-        Helado helado = new Helado();
-        helado.setSabor(txtNombreModificar.getText());
-        helado.setId(Integer.parseInt(String.valueOf(tbListarHelados.getValueAt(fila, 0))));
-        try {
-            Helado.modificarHelado(helado);
-            JOptionPane.showMessageDialog(null, "Helado modificado con exito!");
-            txtNombreModificar.setText("");
-            txtNombreModificar.setEnabled(false);
-            btnModificar.setEnabled(false);
-            lblNombreModificar.setEnabled(false);
-            llenarTablaHelados();
+        if ((txtNombreModificar.getText().equals("")) || (txtCantidad.getText().equals(""))) {
+            JOptionPane.showMessageDialog(null, "Por favor complete los campos de nombre y cantidad");
 
-        } catch (Exception e) {
-            System.out.println("Error al modificar");
+        } else {
+            Helado helado = new Helado();
+            helado.setSabor(txtNombreModificar.getText());
+            helado.setId(Integer.parseInt(String.valueOf(tbListarHelados.getValueAt(fila, 0))));
+            helado.setCantidad(Integer.parseInt(txtCantidad.getText()));
+
+            try {
+                Helado.modificarHelado(helado);
+                JOptionPane.showMessageDialog(null, "Helado modificado con exito!");
+                txtNombreModificar.setText("");
+                txtNombreModificar.setEnabled(false);
+                btnModificar.setEnabled(false);
+                txtCantidad.setText("");
+                txtCantidad.setEnabled(false);
+                //lblNombreModificar.setEnabled(false);
+                llenarTablaHelados();
+
+            } catch (Exception e) {
+                System.out.println("Error al modificar");
+            }
+
         }
+
 
     }//GEN-LAST:event_btnModificarActionPerformed
 
     private void miEliminarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_miEliminarMouseClicked
-        
+
     }//GEN-LAST:event_miEliminarMouseClicked
 
     private void miEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miEliminarActionPerformed
         int dialogBtn = JOptionPane.YES_NO_OPTION;
-        JOptionPane.showConfirmDialog(null, "Relamente quiere eliminar el helado: "+String.valueOf(tbListarHelados.getValueAt(tbListarHelados.getSelectedRow(), 1))+" ?", "Eliminar helado",dialogBtn);
+        JOptionPane.showConfirmDialog(null, "Relamente quiere eliminar el helado: " + String.valueOf(tbListarHelados.getValueAt(tbListarHelados.getSelectedRow(), 1)) + " ?", "Eliminar helado", dialogBtn);
         if (dialogBtn == JOptionPane.YES_OPTION) {
-             int fila = tbListarHelados.getSelectedRow();
-             
-             Helado helado = new Helado();
-             helado.setId(Integer.parseInt(String.valueOf(tbListarHelados.getValueAt(fila, 0))));
-             
-             Helado.eliminarHelado(helado);
-             JOptionPane.showMessageDialog(null, "Helado eliminado");
-             this.llenarTablaHelados();
+            int fila = tbListarHelados.getSelectedRow();
+
+            Helado helado = new Helado();
+            helado.setId(Integer.parseInt(String.valueOf(tbListarHelados.getValueAt(fila, 0))));
+
+            Helado.eliminarHelado(helado);
+            JOptionPane.showMessageDialog(null, "Helado eliminado");
+            this.llenarTablaHelados();
         }
-      
+
     }//GEN-LAST:event_miEliminarActionPerformed
+
+    private void btnCancelarModificacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarModificacionActionPerformed
+        txtNombreModificar.setText("");
+        txtNombreModificar.setEnabled(false);
+        btnModificar.setEnabled(false);
+        txtCantidad.setText("");
+        txtCantidad.setEnabled(false);
+        btnCancelarModificacion.setEnabled(false);
+    }//GEN-LAST:event_btnCancelarModificacionActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnActualizar;
     private javax.swing.JButton btnBuscar;
+    private javax.swing.JButton btnCancelarModificacion;
     private javax.swing.JButton btnModificar;
     private javax.swing.JButton btnSalir;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel lblCantidad;
+    private javax.swing.JLabel lblKilos;
     private javax.swing.JLabel lblListadoHelados;
     private javax.swing.JLabel lblNombre;
     private javax.swing.JLabel lblNombreModificar;
@@ -421,6 +479,7 @@ public class frmListadoHelados extends javax.swing.JInternalFrame {
     private javax.swing.JPopupMenu pmContextual;
     private javax.swing.JTable tbListarHelados;
     private javax.swing.JTextField txtBuscar;
+    private javax.swing.JTextField txtCantidad;
     private javax.swing.JTextField txtNombreModificar;
     // End of variables declaration//GEN-END:variables
 }
